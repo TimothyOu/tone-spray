@@ -1,0 +1,74 @@
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+#main {
+  position: relative;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+#panel {
+  display: none;
+}
+
+#palette:focus {
+  outline: 1px solid gold;
+}
+
+body[data-show-analyzer] #panel {
+  display: unset;
+}
+
+body[data-audio] #audio-container {
+  display: none;
+}
+
+body[data-audio="file"] #audio-container {
+  display: unset;
+}
+body[data-audio="file"] #audio-control-button {
+  display: none;
+}
+
+.audio-info-item {
+  display: flex;
+}
+.audio-info-item > div {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.audio-info-name {
+  width: 150px;
+}
+.audio-info-label {
+  width: 150px;
+}
+.audio-info-value {
+  width: 150px;
+}
+.audio-info-bar {
+  width: 100px;
+  background-color: lightgray;
+}
+
+.audio-info-bar-progress {
+  position: absolute;
+  background-color: red;
+  left: 0;
+  height: 100%;
+}
+.audio-info-bar-progress.is-negative {
+  left: unset;
+  right: 100%;
+}
+.audio-info-bar-progress.is-low {
+  background-color: blue;
+}
+.audio-info-bar-progress.is-high {
+  background-color: orange;
+}
