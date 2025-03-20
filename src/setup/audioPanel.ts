@@ -47,24 +47,28 @@ const inputAudioFile = document.getElementById(
 const frequencyDetector = new FrequencyDetector();
 frequencyDetector.init(frequencyData);
 
-buttonActionElement.onclick = () => {
+export const handleActionElement = () => {
   connectElementSource();
   audioElementWrap.style.display = "";
   canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
   frequencyDetector.clear();
 };
-buttonActionStream.onclick = () => {
+export const handleActionStream = () => {
   connectStreamSource();
   audioElementWrap.style.display = "none";
   audio.pause();
   frequencyDetector.clear();
 };
-buttonActionAudioCapture.onclick = () => {
+export const handleActionAudioCapture = () => {
   connectAudioCaptureSource();
   audioElementWrap.style.display = "none";
   audio.pause();
   frequencyDetector.clear();
 };
+
+buttonActionElement.onclick = handleActionElement;
+buttonActionStream.onclick = handleActionStream;
+buttonActionAudioCapture.onclick = handleActionAudioCapture;
 
 document.addEventListener("keydown", (k) => {
   if ((k.key == "p" || k.key == " ") && !isStream()) {

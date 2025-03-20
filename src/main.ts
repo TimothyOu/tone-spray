@@ -7,7 +7,12 @@ import { Painter } from "./Painter";
 import { sketchAnimatePaint } from "./sketch/sketchAnimatePaint";
 import { sketchCapturePaint } from "./sketch/sketchCapturePaint";
 import { sketchCapture2 } from "./sketch/sketchCapture2";
-import { updateLoop } from "./setup/audioPanel";
+import {
+  handleActionAudioCapture,
+  handleActionElement,
+  handleActionStream,
+  updateLoop,
+} from "./setup/audioPanel";
 import { sketchShow } from "./sketch/sketchShow";
 import { sketchAnimateShow } from "./sketch/sketchAnimateShow";
 import {
@@ -71,13 +76,13 @@ if (sketchType == "animatePaint") {
 
 const audioSourceType = search.get("audio") || defaultAudioSourceType;
 if (audioSourceType == "capture") {
-  connectAudioCaptureSource();
+  handleActionAudioCapture();
 } else if (audioSourceType == "element") {
-  connectElementSource();
+  handleActionElement();
 } else if (audioSourceType == "stream") {
-  connectStreamSource();
+  handleActionStream();
 } else {
-  connectElementSource();
+  handleActionElement();
 }
 
 p5VoicePainter.frameClear = frameClear;
