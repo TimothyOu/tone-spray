@@ -37,6 +37,8 @@ jobs:
           cache: 'npm'
       - name: Enable corepack
         run: npm install -g corepack
+      - name: Install patch-package
+        run: npm install -g patch-package
       - name: Set yarn version
         run: yarn set version latest
       - name: Install dependencies
