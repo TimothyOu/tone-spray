@@ -10,8 +10,14 @@ import { sketchCapture2 } from "./sketch/sketchCapture2";
 import { updateLoop } from "./setup/audioPanel";
 import { sketchShow } from "./sketch/sketchShow";
 import { sketchAnimateShow } from "./sketch/sketchAnimateShow";
+import {
+  connectAudioCaptureSource,
+  connectElementSource,
+  connectStreamSource,
+} from "./analyser";
 
 const defaultSketchType = "capture2";
+const defaultAudioSourceType = "element";
 const frameClear = false;
 
 const palette = document.getElementById("palette")!;
@@ -62,5 +68,17 @@ if (sketchType == "animatePaint") {
 } else {
   p5VoicePainter = new Painter(sketchShow, palette);
 }
+
+const audioSourceType = search.get("audio") || defaultAudioSourceType;
+if (audioSourceType == "capture") {
+  connectAudioCaptureSource();
+} else if (audioSourceType == "element") {
+  connectElementSource();
+} else if (audioSourceType == "stream") {
+  connectStreamSource();
+} else {
+  connectElementSource();
+}
+
 p5VoicePainter.frameClear = frameClear;
 console.log(p5VoicePainter);
