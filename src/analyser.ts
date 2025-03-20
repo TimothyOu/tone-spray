@@ -35,6 +35,8 @@ function connectElementSource() {
   streamSource?.disconnect();
   audioCaptureSource?.disconnect();
   elementSource.connect(analyser);
+  console.log("source");
+  console.log(elementSource);
 }
 function connectStreamSource() {
   if (streamAllowed) {
@@ -42,6 +44,8 @@ function connectStreamSource() {
     elementSource.disconnect();
     audioCaptureSource?.disconnect();
     streamSource?.connect(analyser);
+    console.log("source");
+    console.log(streamSource);
   } else {
     navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
       // 创建音频源
@@ -60,12 +64,18 @@ function connectAudioCaptureSource() {
     streamSource?.disconnect();
     elementSource.disconnect();
     audioCaptureSource?.connect(analyser);
+    console.log("source");
+    console.log(audioCaptureSource);
   });
 }
 
 connectElementSource();
 elementSource.connect(audioCtx.destination);
 analyser.fftSize = 4096;
+
+window.addEventListener("click", () => {
+  audioCtx.resume();
+});
 
 export {
   audio,

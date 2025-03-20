@@ -11,7 +11,7 @@ import { updateLoop } from "./setup/audioPanel";
 import { sketchShow } from "./sketch/sketchShow";
 import { sketchAnimateShow } from "./sketch/sketchAnimateShow";
 
-const defaultSketchType = "animateShow";
+const defaultSketchType = "capture2";
 const frameClear = false;
 
 const palette = document.getElementById("palette")!;
@@ -63,3 +63,4 @@ if (sketchType == "animatePaint") {
   p5VoicePainter = new Painter(sketchShow, palette);
 }
 p5VoicePainter.frameClear = frameClear;
+console.log(p5VoicePainter);

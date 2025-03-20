@@ -10,6 +10,9 @@ export class Painter {
   particleTimingFunction = (x: number) => (x - 1) ** 3 + 1;
   constructor(sketch: (p: p5, painter: Painter) => void, palette: HTMLElement) {
     this.p = new p5((p) => sketch(p, this), palette);
+
+    console.log("Painter");
+    console.log(this);
   }
   drawCircle(
     x: number,

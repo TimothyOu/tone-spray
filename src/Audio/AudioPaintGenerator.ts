@@ -48,6 +48,8 @@ export class AudioPaintGenerator {
     this.timeDomainData = new Float32Array(analyser.fftSize);
     this.frequencyDetector = new FrequencyDetector();
     this.frequencyDetector.init(this.frequencyData);
+    console.log("AudioPaintGenerator");
+    console.log(this);
   }
   // 获取绘制信息
   getPaintData(time: number): PaintData {
