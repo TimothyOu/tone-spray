@@ -34,9 +34,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'yarn'
-      - name: Enable Corepack
+          cache: 'npm'
+      - name: Enable corepack
         run: npm install -g corepack
+      - name: Set yarn version
+        run: yarn set version latest
       - name: Install dependencies
         run: yarn
       - name: Build
